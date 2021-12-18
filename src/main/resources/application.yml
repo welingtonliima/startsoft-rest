@@ -1,0 +1,4 @@
+server:
+    servlet:
+        contextPath: /startsoft/rest/
+    port: 8080
