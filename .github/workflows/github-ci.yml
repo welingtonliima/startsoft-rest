@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
 jobs:
   build:
     name: Build
@@ -34,3 +32,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=welingtonliima_startsoft-rest
+      - name: Build and Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v4
+        with:
+          image: welingtonlima/demo-app
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
