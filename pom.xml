@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>wjangoo.io</groupId>
 	<artifactId>startsoft</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>startsoft</name>
 	<description>Aplicação para controle administrativo e financeiro.</description>
 	<properties>
