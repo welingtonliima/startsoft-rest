@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: startsoft-rest
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: rest
+    template:
+        metadata:
+            labels:
+                app: rest
+        spec:
+            containers:
+                - name: startsoft-rest
+                  image: welingtonlima/startsoft-rest:latest
+                  ports:
+                    - containerPort: 8080

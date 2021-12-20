@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: startsoft-service
+spec:
+    type: LoadBalancer
+    ports:
+        - protocol: TCP
+          name: http-svc
+          port: 8080
+    selector:
+        app: rest
