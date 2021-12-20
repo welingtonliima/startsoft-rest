@@ -47,7 +47,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: welingtonlima/starsoft-rest
-          tags: latest
+          tags: ${{ steps.tagging.outputs.new_version  }}
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -61,11 +61,6 @@ jobs:
           key: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker pull welingtonlima/starsoft-rest:latest 
+            docker pull welingtonlima/starsoft-rest:${{ steps.tagging.outputs.new_version  }} 
             docker rm -f  startsoft-rest
-            docker run -d -p 8080:8080 --name startsoft-rest welingtonlima/starsoft-rest:latest
-            echo ${{ steps.tagging.outputs.new_tag  }}
-            echo ${{ steps.tagging.outputs.new_version  }}
-            echo ${{ steps.tagging.outputs.previous_tag  }}
-            echo ${{ steps.tagging.outputs.previous_version  }}
-            echo ${{ steps.tagging.outputs.release_type   }}
+            docker run -d -p 8080:8080 --name startsoft-rest welingtonlima/starsoft-rest:${{ steps.tagging.outputs.new_version  }}
