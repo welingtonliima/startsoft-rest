@@ -64,4 +64,8 @@ jobs:
             docker pull welingtonlima/starsoft-rest:latest 
             docker rm -f  startsoft-rest
             docker run -d -p 8080:8080 --name startsoft-rest welingtonlima/starsoft-rest:latest
-            echo ${{ steps.tagging.outputs.new_version }}
+            echo ${{ steps.tagging.outputs.new_tag  }}
+            echo ${{ steps.tagging.outputs.new_version  }}
+            echo ${{ steps.tagging.outputs.previous_tag  }}
+            echo ${{ steps.tagging.outputs.previous_version  }}
+            echo ${{ steps.tagging.outputs.release_type   }}
