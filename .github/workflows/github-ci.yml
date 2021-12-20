@@ -58,4 +58,3 @@ jobs:
             docker pull welingtonlima/starsoft-rest:latest 
             docker rm -f  startsoft-rest
             docker run -d -p 8080:8080 --name startsoft-rest welingtonlima/starsoft-rest:latest
-            curl http://localhost:8080/startsoft/rest/endpoint
