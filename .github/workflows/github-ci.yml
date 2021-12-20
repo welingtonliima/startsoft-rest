@@ -37,6 +37,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=welingtonliima_startsoft-rest
 
+      - name: Bump version and push tag
+        id: tagging
+        uses: mathieudutour/github-tag-action@v4.5
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
@@ -58,3 +64,4 @@ jobs:
             docker pull welingtonlima/starsoft-rest:latest 
             docker rm -f  startsoft-rest
             docker run -d -p 8080:8080 --name startsoft-rest welingtonlima/starsoft-rest:latest
+            echo ${{ steps.tagging.outputs.new_version }}
