@@ -41,7 +41,7 @@ jobs:
         id: tagging
         uses: mathieudutour/github-tag-action@v6.0
         with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            github_token: ${{ secrets.GITHUB_TOKEN }
       
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v5
